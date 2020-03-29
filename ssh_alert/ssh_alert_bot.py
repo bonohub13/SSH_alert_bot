@@ -5,7 +5,7 @@ import subprocess
 from time import sleep
 
 class InformSSH:
-    def __init__(self, accessToken, setFreq=30):
+    def __init__(self, accessToken, setFreq=180):
         self.url = 'https://notify-api.line.me/api/notify'
         self.headers = {'Authorization': 'Bearer '+accessToken}
 
@@ -22,10 +22,9 @@ class InformSSH:
     def run(self):
         while True:
             check_ssh = subprocess.Popen('printenv | grep SSH', stdout=subprocess.PIPE, shell=True)
-            check_ssh_stdout = str(check_ssh.stdout.read())[2:-1].split('\\n')[:-1]
-            print(check_ssh_stdout)
-            if 'SSH_CLIENT' in check_ssh_stdout[0] and 'SSH_TTY' in check_ssh_stdout[1] and 'SSH_CONNECTION' in check_ssh_stdout[2]:
-                self.dataToSend('Your computer has been accessed through SSH:\n\t{}'.format(check_ssh_stdout[0]))
+            check_ssh_stdout = str(check_ssh.stdout.read())
+        if 'ESTABLISHED' in check_ssh_stdout:
+                self.dataToSend('Your computer has been accessed through SSH!')
                 request = requests.post(self.url, headers=self.headers,
                                           data=self.payload,
                                           files=self.files)
