@@ -1,0 +1,10 @@
+[Unit]
+Description = Line bot that notifies each access through SSH
+
+[Service]
+ExecStart = /opt/LINE_bot/ssh_alert/ssh_alert_bot.py
+Restart = always
+Type = simple
+
+[Install]
+WantedBy = multi-user.target
