@@ -21,7 +21,7 @@ class InformSSH:
 
     def run(self):
         while True:
-            check_ssh = subprocess.Popen('printenv | grep SSH', stdout=subprocess.PIPE, shell=True)
+            check_ssh = subprocess.Popen('netstat | grep ssh', stdout=subprocess.PIPE, shell=True)
             check_ssh_stdout = str(check_ssh.stdout.read())
         if 'ESTABLISHED' in check_ssh_stdout:
                 self.dataToSend('Your computer has been accessed through SSH!')
