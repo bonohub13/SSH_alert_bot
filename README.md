@@ -1,6 +1,6 @@
 # SSH\_alert\_bot
 
-### ::::: Desciption :::::
+### ::::: Description :::::
 This bot notifies any access using SSH to your computer using the API from the LINE application.
 
 ### ::::: Initial setup :::::
