@@ -14,3 +14,5 @@ This bot notifies any access using SSH to your computer using the API from the L
 	- $ sudo systemctl start ssh\_alert\_bot.service
 
 ### ::::: Updates :::::
+- May 31, 2020
+	- used ss command instead of netstat for less resource
